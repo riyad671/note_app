@@ -22,6 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
               // Children methods
               children: [
+                // Top bar
                 const Text(
                   'Notes',
                   style: TextStyle(
@@ -46,6 +47,34 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ],
+            ),
+            // Space
+            const SizedBox(
+              height: 20,
+            ),
+            // Search bar
+            TextField(
+              style: const TextStyle(
+                fontSize: 16,
+                color: Colors.white,
+              ),
+              decoration: InputDecoration(
+                contentPadding: const EdgeInsets.symmetric(vertical: 12),
+                hintText: 'Search',
+                hintStyle: const TextStyle(color: Colors.grey),
+                prefixIcon: const Icon(
+                  Icons.search,
+                  color: Colors.grey,
+                ),
+                fillColor: Colors.grey.shade800,
+                filled: true,
+                focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30),
+                    borderSide: const BorderSide(color: Colors.transparent)),
+                enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30),
+                    borderSide: const BorderSide(color: Colors.transparent)),
+              ),
             ),
           ],
         ),
