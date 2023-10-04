@@ -76,6 +76,54 @@ class _HomeScreenState extends State<HomeScreen> {
                     borderSide: const BorderSide(color: Colors.transparent)),
               ),
             ),
+
+            // Note tiles
+            Expanded(
+                child: ListView(
+              children: [
+                Card(
+                  elevation: 3,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10)),
+                  child: ListTile(
+                    title: RichText(
+                      text: const TextSpan(
+                          text: 'Title\n',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                            height: 1.5,
+                          ),
+                          children: [
+                            TextSpan(
+                              text: 'Write here',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.normal,
+                                fontSize: 14,
+                                height: 1.5,
+                              ),
+                            ),
+                          ]),
+                    ),
+                    subtitle: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        'Edited: 04-10-2023',
+                        style: TextStyle(
+                          fontSize: 10,
+                          fontStyle: FontStyle.italic,
+                          color: Colors.grey.shade800,
+                        ),
+                      ),
+                    ),
+                    trailing: IconButton(
+                        onPressed: () {}, icon: const Icon(Icons.delete)),
+                  ),
+                ),
+              ],
+            )),
           ],
         ),
       ),
