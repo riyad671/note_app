@@ -15,17 +15,17 @@ class Note {
 List<Note> sampleNotes = [
   Note(
     id: 0,
-    title: 'Like and Subscribe',
+    title: 'Take note',
     content:
-        'A FREE way to support the channel is to give us a LIKE . It does not cost you but means a lot to us.\nIf you are new here please Subscribe',
-    modifiedTime: DateTime(2022, 1, 1, 34, 5),
+        'A FREE way to support take note.\nIf you want to give review, you are most welcome',
+    modifiedTime: DateTime(2023, 1, 1, 34, 5),
   ),
   Note(
     id: 1,
     title: 'Recipes to Try',
     content:
         '1. Chicken Alfredo\n2. Vegan chili\n3. Spaghetti carbonara\n4. Chocolate lava cake',
-    modifiedTime: DateTime(2022, 1, 1, 34, 5),
+    modifiedTime: DateTime(2023, 1, 1, 34, 5),
   ),
   Note(
     id: 2,
