@@ -1,5 +1,8 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:note_app/constants/colors.dart';
 import 'package:note_app/models/note.dart';
 // import 'package:intl/intl_browser.dart';
 
@@ -11,6 +14,12 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  // For random color
+  getRandomColor() {
+    Random random = Random();
+    return backgroundColors[random.nextInt(backgroundColors.length)];
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,9 +92,12 @@ class _HomeScreenState extends State<HomeScreen> {
             // Note tiles
             Expanded(
                 child: ListView.builder(
+              padding: const EdgeInsets.only(top: 30),
               itemCount: sampleNotes.length,
               itemBuilder: (context, index) {
                 return Card(
+                  margin: const EdgeInsets.only(bottom: 20),
+                  color: getRandomColor(),
                   elevation: 3,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10)),
