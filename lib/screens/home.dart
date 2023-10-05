@@ -58,6 +58,8 @@ class _HomeScreenState extends State<HomeScreen> {
   // Delete note
   void deleteNote(int index) {
     setState(() {
+      Note note = filteredNotes[index];
+      sampleNotes.remove(note);
       filteredNotes.removeAt(index);
     });
   }
@@ -192,71 +194,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       // Delete icon
                       trailing: IconButton(
                           onPressed: () async {
-                            final result = await showDialog(
-                              context: context,
-                              builder: (BuildContext context) {
-                                return AlertDialog(
-                                  backgroundColor: Colors.grey.shade800,
-                                  icon: Icon(
-                                    Icons.info,
-                                    color: Colors.grey.shade800,
-                                  ),
-                                  title: const Text(
-                                    'Confirmation',
-                                    style: TextStyle(color: Colors.white),
-                                  ),
-                                  content: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      // Yes button
-                                      ElevatedButton(
-                                        onPressed: () {
-                                          Navigator.pop(context, true);
-                                        },
-                                        style: ElevatedButton.styleFrom(
-                                            backgroundColor:
-                                                const Color.fromRGBO(
-                                                    253, 87, 75, 1)),
-                                        child: const SizedBox(
-                                          width: 60,
-                                          child: Text(
-                                            'Yes',
-                                            textAlign: TextAlign.center,
-                                            style:
-                                                TextStyle(color: Colors.white),
-                                          ),
-                                        ),
-                                      ),
-                                      // spaces
-                                      const SizedBox(
-                                        width: 20,
-                                      ),
-                                      // No button
-                                      ElevatedButton(
-                                        onPressed: () {
-                                          Navigator.pop(context, false);
-                                        },
-                                        style: ElevatedButton.styleFrom(
-                                            backgroundColor:
-                                                const Color.fromRGBO(
-                                                    75, 253, 134, 1)),
-                                        child: const SizedBox(
-                                          width: 60,
-                                          child: Text(
-                                            'No',
-                                            textAlign: TextAlign.center,
-                                            style:
-                                                TextStyle(color: Colors.white),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                );
-                              },
-                            );
+                            final result = await confirmDialog(context);
                             // Delete
-                            if (result) {
+                            if (result != null && result) {
                               deleteNote(index);
                             }
                           },
@@ -278,6 +218,63 @@ class _HomeScreenState extends State<HomeScreen> {
           size: 38,
         ),
       ),
+    );
+  }
+
+  Future<dynamic> confirmDialog(BuildContext context) {
+    return showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          backgroundColor: Colors.grey.shade800,
+          icon: Icon(
+            Icons.info,
+            color: Colors.grey.shade800,
+          ),
+          title: const Text(
+            'Confirmation',
+            style: TextStyle(color: Colors.white),
+          ),
+          content: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              // Yes button
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pop(context, true);
+                },
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color.fromRGBO(253, 87, 75, 1)),
+                child: const SizedBox(
+                  width: 60,
+                  child: Text(
+                    'Yes',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ),
+
+              // No button
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pop(context, false);
+                },
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color.fromRGBO(75, 253, 134, 1)),
+                child: const SizedBox(
+                  width: 60,
+                  child: Text(
+                    'No',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 }
