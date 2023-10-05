@@ -211,13 +211,26 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
+        onPressed: () async {
+          final result = await Navigator.push(
             context,
             MaterialPageRoute(
               builder: (BuildContext context) => const EditScreen(),
             ),
           );
+          if (result != null) {
+            setState(() {
+              sampleNotes.add(
+                Note(
+                  id: sampleNotes.length,
+                  title: result[0],
+                  content: result[1],
+                  modifiedTime: DateTime.now(),
+                ),
+              );
+              filteredNotes = sampleNotes;
+            });
+          }
         },
         elevation: 10,
         backgroundColor: Colors.grey.shade800,

@@ -8,6 +8,9 @@ class EditScreen extends StatefulWidget {
 }
 
 class _EditScreenState extends State<EditScreen> {
+  // Controller for edit text
+  TextEditingController _titleController = TextEditingController();
+  TextEditingController _contentController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,10 +51,12 @@ class _EditScreenState extends State<EditScreen> {
             // Note option
             Expanded(
               child: ListView(
-                children: const [
+                children: [
+                  // Title
                   TextField(
-                    style: TextStyle(color: Colors.white, fontSize: 30),
-                    decoration: InputDecoration(
+                    controller: _titleController,
+                    style: const TextStyle(color: Colors.white, fontSize: 30),
+                    decoration: const InputDecoration(
                       border: InputBorder.none,
                       hintText: 'Title',
                       hintStyle: TextStyle(
@@ -59,11 +64,13 @@ class _EditScreenState extends State<EditScreen> {
                           color: Color.fromRGBO(158, 158, 158, 0.74)),
                     ),
                   ),
+                  // Content
                   TextField(
-                    style: TextStyle(
+                    controller: _contentController,
+                    style: const TextStyle(
                       color: Colors.white,
                     ),
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       border: InputBorder.none,
                       hintText: 'Write here',
                       hintStyle:
@@ -77,7 +84,15 @@ class _EditScreenState extends State<EditScreen> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pop(
+            context,
+            [
+              _titleController.text,
+              _contentController.text,
+            ],
+          );
+        },
         elevation: 10,
         backgroundColor: Colors.grey.shade800,
         child: const Icon(Icons.save),
