@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:note_app/constants/colors.dart';
 import 'package:note_app/models/note.dart';
+import 'package:note_app/screens/edit.dart';
 // import 'package:intl/intl_browser.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -210,7 +211,14 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (BuildContext context) => const EditScreen(),
+            ),
+          );
+        },
         elevation: 10,
         backgroundColor: Colors.grey.shade800,
         child: const Icon(
