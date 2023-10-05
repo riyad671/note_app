@@ -23,9 +23,11 @@ class _EditScreenState extends State<EditScreen> {
               // Children methods
               children: [
                 // Top bar
-                // Sort icon
+                // Back icon
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                   padding: const EdgeInsets.all(0),
                   icon: Container(
                     height: 40,
