@@ -55,6 +55,13 @@ class _HomeScreenState extends State<HomeScreen> {
     return notes;
   }
 
+  // Delete note
+  void deleteNote(int index) {
+    setState(() {
+      filteredNotes.removeAt(index);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -182,8 +189,12 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                       ),
+                      // Delete icon
                       trailing: IconButton(
-                          onPressed: () {}, icon: const Icon(Icons.delete)),
+                          onPressed: () {
+                            deleteNote(index);
+                          },
+                          icon: const Icon(Icons.delete)),
                     ),
                   ),
                 );
