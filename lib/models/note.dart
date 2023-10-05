@@ -17,27 +17,25 @@ List<Note> sampleNotes = [
     id: 0,
     title: 'Take note',
     content:
-        'A FREE way to support take note.\nIf you want to give review, you are most welcome',
+        'A free way to support and take note.\nIf you want to give a review, you are most welcome',
     modifiedTime: DateTime(2023, 1, 1, 34, 5),
   ),
   Note(
     id: 1,
     title: 'Recipes to Try',
-    content:
-        '1. Chicken Alfredo\n2. Vegan chili\n3. Spaghetti carbonara\n4. Chocolate lava cake',
+    content: '1. Chicken\n2. Biriyani\n3. Kacci\n4. Chocolate lava cake',
     modifiedTime: DateTime(2023, 1, 1, 34, 5),
   ),
   Note(
     id: 2,
     title: 'Books to Read',
-    content:
-        '1. To Kill a Mockingbird\n2. 1984\n3. The Great Gatsby\n4. The Catcher in the Rye',
+    content: '1. Steal like a artist\n2. 1984\n3. Time Management\n4. Manga',
     modifiedTime: DateTime(2023, 3, 1, 19, 5),
   ),
   Note(
     id: 3,
     title: 'Gift Ideas for Mom',
-    content: '1. Jewelry box\n2. Cookbook\n3. Scarf\n4. Spa day gift card',
+    content: '1. Jewelry box\n2. Cookbook\n3. Scarf\n4. Gift card',
     modifiedTime: DateTime(2023, 1, 4, 16, 53),
   ),
   Note(
@@ -51,28 +49,21 @@ List<Note> sampleNotes = [
     id: 5,
     title: 'Bucket List',
     content:
-        '1. Travel to Japan\n2. Learn to play the guitar\n3. Write a novel\n4. Run a marathon\n5. Start a business',
+        '1. Travel to Sajek\n2. Learn to play the guitar\n3. Write a story\n4. Run a marathon\n5. Start a business',
     modifiedTime: DateTime(2023, 1, 6, 13, 9),
-  ),
-  Note(
-    id: 6,
-    title: 'Little pigs',
-    content:
-        "Once upon a time there were three little pigs who set out to seek their fortune.",
-    modifiedTime: DateTime(2023, 3, 7, 11, 12),
   ),
   Note(
     id: 7,
     title: 'Meeting Notes',
     content:
-        'Attendees: John, Mary, David\nAgenda:\n- Budget review\n- Project updates\n- Upcoming events',
+        'Attendees: Online class, Flutter, App Development\n - Upcoming events',
     modifiedTime: DateTime(2023, 2, 1, 15, 14),
   ),
   Note(
     id: 8,
     title: 'Ideas for Vacation',
     content:
-        '1. Visit Grand Canyon\n2. Go on a hot air balloon ride\n3. Try local cuisine\n4. Attend a concert',
+        '1. Visit Cox\'s bazar\n2. Go on a hot air balloon ride\n3. Play Game\n4. Attend 40 day\'s chillah',
     modifiedTime: DateTime(2023, 2, 1, 12, 34),
   ),
 ];
