@@ -21,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   // Initialize empty list
-  var filteredNotes = [];
+  List<Note> filteredNotes = [];
 
   @override
   void initState() {
@@ -40,6 +40,19 @@ class _HomeScreenState extends State<HomeScreen> {
           )
           .toList();
     });
+  }
+
+  // shorting
+  bool sorted = false;
+  List<Note> sortNoteByMOdifiedTime(List<Note> notes) {
+    if (sorted) {
+      notes.sort((a, b) => a.modifiedTime.compareTo(b.modifiedTime));
+    } else {
+      notes.sort((b, a) => a.modifiedTime.compareTo(b.modifiedTime));
+    }
+
+    sorted = !sorted;
+    return notes;
   }
 
   @override
@@ -64,8 +77,13 @@ class _HomeScreenState extends State<HomeScreen> {
                     color: Colors.white,
                   ),
                 ),
+                // Sort icon
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    setState(() {
+                      filteredNotes = sortNoteByMOdifiedTime(filteredNotes);
+                    });
+                  },
                   padding: const EdgeInsets.all(0),
                   icon: Container(
                     height: 40,
