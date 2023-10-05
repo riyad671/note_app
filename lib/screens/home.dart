@@ -20,6 +20,28 @@ class _HomeScreenState extends State<HomeScreen> {
     return backgroundColors[random.nextInt(backgroundColors.length)];
   }
 
+  // Initialize empty list
+  var filteredNotes = [];
+
+  @override
+  void initState() {
+    super.initState();
+    filteredNotes = sampleNotes;
+  }
+
+  // For search note
+  void onSearchTextChanged(String searchText) {
+    setState(() {
+      filteredNotes = sampleNotes
+          .where(
+            (note) =>
+                note.content.toLowerCase().contains(searchText.toLowerCase()) ||
+                note.title.toLowerCase().contains(searchText.toLowerCase()),
+          )
+          .toList();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,6 +88,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             // Search bar
             TextField(
+              onChanged: onSearchTextChanged,
               style: const TextStyle(
                 fontSize: 16,
                 color: Colors.white,
@@ -93,7 +116,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Expanded(
                 child: ListView.builder(
               padding: const EdgeInsets.only(top: 30),
-              itemCount: sampleNotes.length,
+              itemCount: filteredNotes.length,
               itemBuilder: (context, index) {
                 return Card(
                   margin: const EdgeInsets.only(bottom: 20),
@@ -109,7 +132,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         overflow: TextOverflow.ellipsis,
                         // Title
                         text: TextSpan(
-                            text: '${sampleNotes[index].title}\n',
+                            text: '${filteredNotes[index].title}\n',
                             style: const TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.bold,
@@ -119,7 +142,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             // Sub-title
                             children: [
                               TextSpan(
-                                text: '${sampleNotes[index].content}',
+                                text: filteredNotes[index].content,
                                 style: const TextStyle(
                                   color: Colors.black,
                                   fontWeight: FontWeight.normal,
